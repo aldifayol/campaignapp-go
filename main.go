@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 
+	"github.com/aldifayol/campaignapp-go/config"
 	"github.com/gin-gonic/gin"
 )
 
@@ -48,6 +49,11 @@ func getUserById(c *gin.Context) {
 				}
 				c.IndentedJSON(http.StatusNotFound, gin.H{"message": "user not found"})
 		}
+}
+
+func init() {
+	config.ConnectToDB()
+	config.LoadEnv()
 }
 
 func main() {
